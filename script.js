@@ -109,8 +109,8 @@ console.log(people);
 
 averageAge = combinedAge / people.length;
 
-console.log("Combined Age: " + combinedAge);
-console.log("Average Age: " + averageAge);
+console.log("Combined Age:", combinedAge);
+console.log("Average Age:", averageAge);
 
 /******************************************************************************
 2.
@@ -137,11 +137,10 @@ console.log("\nAssignment 2:");
 let diceThrows = [];
 const diceRoller = (num, max) => {
   max = Math.floor(max);
-  for (i = 0; i < num; i++)
-    diceThrows.push(Math.floor(Math.random() * (max - 1 + 1)) + 1);
+  for (i = 0; i < num; i++) diceThrows.push(Math.ceil(Math.random() * max));
 };
 
-diceRoller(5, 20);
+diceRoller(15, 20);
 
 console.log(diceThrows);
 
