@@ -89,8 +89,28 @@ const people = [
 let combinedAge = 0;
 
 // Skriv koden for oppgave 1 her
-
+console.log("Assignement 1:");
 let averageAge = 0;
+
+for (let i = 0; i < people.length; i++) {
+  const person = people[i];
+
+  if (person.name === "Otto") continue;
+
+  person.city = cities[Math.floor(Math.random() * cities.length)];
+  person.title = person.male ? "Mr." : "Ms.";
+  person.age += 2;
+  person.hobbies.unshift("coding");
+
+  combinedAge += person.age;
+}
+
+console.log(people);
+
+averageAge = combinedAge / people.length;
+
+console.log("Combined Age: " + combinedAge);
+console.log("Average Age: " + averageAge);
 
 /******************************************************************************
 2.
@@ -113,6 +133,17 @@ diceRoller(5, 20) skal returnere et array med 5 tilfeldige tall fra 1-20.
 ******************************************************************************/
 
 // Skriv koden for oppgave 2 her
+console.log("\nAssignment 2:");
+let diceThrows = [];
+const diceRoller = (num, max) => {
+  max = Math.floor(max);
+  for (i = 0; i < num; i++)
+    diceThrows.push(Math.floor(Math.random() * (max - 1 + 1)) + 1);
+};
+
+diceRoller(5, 20);
+
+console.log(diceThrows);
 
 /******************************************************************************
 3.
@@ -140,6 +171,15 @@ skal returnere:
 ******************************************************************************/
 
 // Skriv koden for oppgave 3 her
+console.log("\nAssignment 3:");
+const textCleaner = (array) => {
+  for (item of array) {
+    item.trim();
+    item.toLowerCase();
+  }
+  array.join(" ");
+  return array;
+};
 
 /******************************************************************************
 4.
@@ -165,11 +205,47 @@ doubleSwap("what is the point of this?", "o", "t")
 skal returnere "whao is ohe ptino tf ohis?"
 
 ******************************************************************************/
-
-function doubleSwap(string, charA, charB) {
+console.log("\nAssignment 4:");
+function doubleSwap(string = "example", charA, charB) {
   // Skriv koden for oppgave 4 her
+  lowerInput = string.toLowerCase();
+  a = charA.toLowerCase();
+  b = charB.toLowerCase();
+
+  // Jeg fikk hjelp av AI for koden under, men jeg skjønner alt sammen.
+  const transformed = Array.from(lowerInput).map((char) => {
+    if (char === a) return b;
+    if (char === b) return a;
+    return char;
+  });
+
+  const result = transformed.join("");
+
+  return result.charAt(0).toUpperCase() + result.slice(1);
+}
+/* Her er min kode før jeg brukte AI om du er interessert:
+  let modifiedString = "";
+  for (let i = 0; i < string.length; i++) {
+    switch (lowerInput[i]) {
+      case a:
+        modifiedString[i] = b;
+        break;
+      case b:
+        modifiedString[i] = a;
+        break;
+      default:
+        modifiedString[i] = lowerInput[i];
+        break;
+    }
+  }
+
+  return modifiedString.charAt(0).toUpperCase() + modifiedString.slice(1);
 }
 
+Den virket ikke fordi jeg prøvde å overskrive en index i en string, men strings er immutable*/
+console.log(
+  doubleSwap("It's a fine morning for programming, ain't it?", "m", "i"),
+);
 /******************************************************************************
 5.
 
@@ -213,3 +289,18 @@ const greetings = [
 ];
 
 // Skriv koden for oppgave 5 her
+console.log("\nAssignment 5:");
+const helloChecker = (input = "default") => {
+  input = input.toLowerCase();
+  if (input.includes("hello")) return "HELLO oppdaget på engelsk.";
+  else if (input.includes("ciao")) return "HELLO oppdaget på italiensk.";
+  else if (input.includes("salut")) return "HELLO oppdaget på fransk.";
+  else if (input.includes("hallo")) return "HELLO oppdaget på tysk.";
+  else if (input.includes("hola")) return "HELLO oppdaget på spansk.";
+  else if (input.includes("cześć")) return "HELLO oppdaget på polsk.";
+  else return "Ingen HELLO oppdaget.";
+};
+
+for (greeting of greetings) {
+  console.log(helloChecker(greeting));
+}
