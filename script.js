@@ -137,7 +137,7 @@ console.log("\nAssignment 2:");
 let diceThrows = [];
 const diceRoller = (num, max) => {
   max = Math.floor(max);
-  for (i = 0; i < num; i++) diceThrows.push(Math.ceil(Math.random() * max));
+  for (let i = 0; i < num; i++) diceThrows.push(Math.ceil(Math.random() * max));
 };
 
 diceRoller(15, 20);
@@ -172,12 +172,11 @@ skal returnere:
 // Skriv koden for oppgave 3 her
 console.log("\nAssignment 3:");
 const textCleaner = (array) => {
-  for (item of array) {
+  for (let item of array) {
     item.trim();
     item.toLowerCase();
   }
-  array.join(" ");
-  return array;
+  return array.join(" ");
 };
 
 /******************************************************************************
@@ -207,9 +206,9 @@ skal returnere "whao is ohe ptino tf ohis?"
 console.log("\nAssignment 4:");
 function doubleSwap(string = "example", charA, charB) {
   // Skriv koden for oppgave 4 her
-  lowerInput = string.toLowerCase();
-  a = charA.toLowerCase();
-  b = charB.toLowerCase();
+  const lowerInput = string.toLowerCase();
+  const a = charA.toLowerCase();
+  const b = charB.toLowerCase();
 
   // Jeg fikk hjelp av AI for koden under, men jeg skjønner alt sammen.
   const transformed = Array.from(lowerInput).map((char) => {
@@ -300,6 +299,6 @@ const helloChecker = (input = "default") => {
   else return "Ingen HELLO oppdaget.";
 };
 
-for (greeting of greetings) {
+for (let greeting of greetings) {
   console.log(helloChecker(greeting));
 }
